@@ -1,0 +1,2 @@
+include ':eg1'
+rootProject.name='ndk_learning'
