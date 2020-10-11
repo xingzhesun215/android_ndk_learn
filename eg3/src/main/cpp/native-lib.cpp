@@ -127,3 +127,4 @@ Java_com_sun_eg3_MainActivity_accessConstructor(JNIEnv *env, jobject thiz) {
 //    return jdateClass;
     return jTestClass;
 }
+
