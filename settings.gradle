@@ -1,2 +1,2 @@
-include ':eg1'
+include ':eg1', ':eg3'
 rootProject.name='ndk_learning'
