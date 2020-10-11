@@ -6,8 +6,8 @@
 3,JNI访问java变量和方法
 4,JNI操作Java数组
 5,JNI实现文件加解密
-6,JNI实现文件拆分和合并
+8,JNI实现文件拆分和合并
 7,JNI实现文件夹遍历
-8,JNI下的Bitmap的使用
+6,JNI下的Bitmap的使用
 9,JNI hello jniCallBack整合
 10,Hello OpenGLES3
