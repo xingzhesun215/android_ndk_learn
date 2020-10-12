@@ -1,27 +1,25 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 
-add_library( # Sets the name of the library.
-             native-lib
+add_library(
+        native-lib
+        SHARED
+        native-lib.cpp)
 
-             # Sets the library as a shared library.
-             SHARED
+add_library(
+        file_operation
+        SHARED
+        file_operation.cpp)
 
-             # Provides a relative path to your source file(s).
-             native-lib.cpp )
-
-
-find_library( # Sets the name of the path variable.
-              log-lib
-
-              # Specifies the name of the NDK library that
-              # you want CMake to locate.
-              log )
+find_library(
+        log-lib
+        log)
 
 
-target_link_libraries( # Specifies the target library.
-                       native-lib
+target_link_libraries(
+        file_operation
+        ${log-lib})
 
-                       # Links the target library to the log library
-                       # included in the NDK.
-                       ${log-lib} )
+target_link_libraries(
+        native-lib
+        ${log-lib})

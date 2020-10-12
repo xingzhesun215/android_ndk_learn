@@ -1,16 +1,6 @@
 #include <jni.h>
-#include <string>
-#include <android/log.h>
-#include "LogUtils.h"
-
-
-extern "C" JNIEXPORT jstring JNICALL
-Java_com_sun_eg8_MainActivity_stringFromJNI(
-        JNIEnv* env,
-        jobject /* this */) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
-}
+#include <cstdio>
+#include <cstdlib>
 
 #include <android/log.h>
 
@@ -44,7 +34,7 @@ const int SIZE = 100;
  */
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_sun_eg8_MainActivity_createFile(JNIEnv *env, jobject instance, jstring fileName_) {
+Java_com_sun_eg8_JniFileOperation_createFile(JNIEnv *env, jobject instance, jstring fileName_) {
     const char *fileName = env->GetStringUTFChars(fileName_, nullptr);
 
     //创建写文件流
@@ -52,7 +42,7 @@ Java_com_sun_eg8_MainActivity_createFile(JNIEnv *env, jobject instance, jstring 
 
     //写文件
     for (int i = 0; i < SIZE; i++) {
-        fputs("0123456789\n", fp);
+        fputs("abcdedfdaladsjkasdf\n", fp);
     }
     //关闭流
     fclose(fp);
@@ -65,8 +55,8 @@ Java_com_sun_eg8_MainActivity_createFile(JNIEnv *env, jobject instance, jstring 
  */
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_sun_eg8_MainActivity_split(JNIEnv *env, jobject instance, jstring path_,
-                                        jstring pathPattern_, jint splitCount) {
+Java_com_sun_eg8_JniFileOperation_split(JNIEnv *env, jobject instance, jstring path_,
+                                            jstring pathPattern_, jint splitCount) {
     const char *path = env->GetStringUTFChars(path_, nullptr);
     const char *pathPattern = env->GetStringUTFChars(pathPattern_, nullptr);
 
@@ -131,8 +121,8 @@ Java_com_sun_eg8_MainActivity_split(JNIEnv *env, jobject instance, jstring path_
  */
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_sun_eg8_MainActivity_merge(JNIEnv *env, jobject instance, jstring pathMerge_,
-                                        jstring pathPattern_, jint count) {
+Java_com_sun_eg8_JniFileOperation_merge(JNIEnv *env, jobject instance, jstring pathMerge_,
+                                            jstring pathPattern_, jint count) {
     const char *pathMerge = env->GetStringUTFChars(pathMerge_, nullptr);
     const char *pathPattern = env->GetStringUTFChars(pathPattern_, nullptr);
 
@@ -163,4 +153,3 @@ Java_com_sun_eg8_MainActivity_merge(JNIEnv *env, jobject instance, jstring pathM
     env->ReleaseStringUTFChars(pathMerge_, pathMerge);
     env->ReleaseStringUTFChars(pathPattern_, pathPattern);
 }
-

@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv_result = this.findViewById(R.id.tv_result);
         tv_result.setText(stringFromJNI());
+        new JniFileOperation().test();
     }
 
     static {
